@@ -2,8 +2,12 @@ package com.example.appimc
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.slider.RangeSlider
+import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
     //creamos 2 variables de tipo boolena para mas adelante de nuestro codigo
@@ -13,6 +17,19 @@ class MainActivity : AppCompatActivity() {
     //con el lateinit le decimos (no te inicies ahora te iniciaras cuando yo te diga)
     private lateinit var viewMale:CardView
     private lateinit var viewFemale:CardView
+    //creamos los datos para el range slider
+    private lateinit var tvHeigth:TextView
+    private lateinit var rsHeigth:RangeSlider
+    //iniciamos los compomentes para controlar el peso y la edad
+    private lateinit var fabMenosPeso:FloatingActionButton
+    private lateinit var fabMasPeso:FloatingActionButton
+    private lateinit var tvMasMenosPeso:TextView
+
+    private lateinit var fabMenosEdad:FloatingActionButton
+    private lateinit var fabMasEdad:FloatingActionButton
+    private lateinit var tvMasMenosEdad:TextView
+    var peso:Int = 0
+    var edad:Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,6 +49,16 @@ class MainActivity : AppCompatActivity() {
     private fun initComponents(){
         viewMale = findViewById(R.id.viewMale)
         viewFemale = findViewById(R.id.viewFemale)
+        tvHeigth = findViewById(R.id.tvAltura)
+        rsHeigth = findViewById(R.id.rsAltura)
+        fabMenosPeso =  findViewById(R.id.fabLessWeigth)
+        fabMasPeso = findViewById(R.id.fabMoreWeigth)
+        fabMenosEdad = findViewById(R.id.fabLessAge)
+        fabMasEdad = findViewById(R.id.fabMoreAge)
+        tvMasMenosPeso = findViewById(R.id.tvWeigth)
+        tvMasMenosEdad = findViewById(R.id.tvAge)
+        peso = tvMasMenosPeso.text.toString().toInt()
+        edad = tvMasMenosEdad.text.toString().toInt()
     }
     private fun initListeners(){
         //este metodo solo les colocara un escucha de click ya sea en hombre o mujer depende de cual se cliceee
@@ -43,6 +70,32 @@ class MainActivity : AppCompatActivity() {
             changeGender()
             setGenderColor()
         }
+        //Aca colocaremos un escucha apra nuestro range slider
+        rsHeigth.addOnChangeListener { _, value, _ ->
+            //formatearemos el decimal para que no nos de valores enteros
+            val df = DecimalFormat("#.##")
+            val result = df.format(value)
+            tvHeigth.text = "$result cm"
+        }
+        fabMenosPeso.setOnClickListener {
+            peso -= 1
+            setWeight()
+        }
+        fabMasPeso.setOnClickListener {
+            peso += 1
+            setWeight()
+        }
+        fabMenosEdad.setOnClickListener {
+            edad -=1
+            tvMasMenosEdad.text = edad.toString()
+        }
+        fabMasEdad.setOnClickListener {
+            edad +=1
+            tvMasMenosEdad.text = edad.toString()
+        }
+    }
+    private fun setWeight(){
+        tvMasMenosPeso.text = peso.toString()
     }
     private fun changeGender(){
         isMaleSelected = !isMaleSelected //false
