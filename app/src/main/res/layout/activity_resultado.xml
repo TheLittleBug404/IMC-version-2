@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_app"
+    tools:context=".ResultadoActivity">
+
+    <TextView
+        android:id="@+id/tvTituloresultado"
+        android:text="@string/tuResultado"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:layout_marginTop="26dp"
+        android:textStyle="bold|italic"
+        />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvResultado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        app:cardCornerRadius="20dp"
+        android:backgroundTint="@color/background_component"
+        app:layout_constraintTop_toBottomOf="@+id/tvTituloresultado"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvResultadoFinalEstado"
+                android:text="Normal"
+                android:textColor="@color/colorVerde"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginTop="80dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvResultadoFinalIMC"
+                android:text="24.5"
+                android:textColor="@color/white"
+                android:textSize="100sp"
+                android:textStyle="bold"
+                android:layout_marginTop="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvResultadoFinalComposicionCorporal"
+                android:text="Peso inferior al normal"
+                android:textColor="@color/white"
+                android:textSize="27sp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="80dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/buttonRecalcular"
+        android:text="@string/reCalcular"
+        android:textSize="30sp"
+        android:backgroundTint="@color/background_button"
+        app:layout_constraintTop_toBottomOf="@+id/cvResultado"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

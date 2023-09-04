@@ -1,7 +1,9 @@
 package com.example.appimc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
@@ -30,6 +32,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvMasMenosEdad:TextView
     var peso:Int = 0
     var edad:Int = 0
+    //creando variable para el boton calcular
+    private lateinit var botonCalcular:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -59,6 +63,7 @@ class MainActivity : AppCompatActivity() {
         tvMasMenosEdad = findViewById(R.id.tvAge)
         peso = tvMasMenosPeso.text.toString().toInt()
         edad = tvMasMenosEdad.text.toString().toInt()
+        botonCalcular = findViewById(R.id.buttonCalcular)
     }
     private fun initListeners(){
         //este metodo solo les colocara un escucha de click ya sea en hombre o mujer depende de cual se cliceee
@@ -92,6 +97,10 @@ class MainActivity : AppCompatActivity() {
         fabMasEdad.setOnClickListener {
             edad +=1
             tvMasMenosEdad.text = edad.toString()
+        }
+        botonCalcular.setOnClickListener {
+            val ventanaNueva = Intent(this,ResultadoActivity::class.java)
+            startActivity(ventanaNueva)
         }
     }
     private fun setWeight(){

@@ -7,4 +7,8 @@
     <string name="age">Edad</string>
     <string name="numberWeigth">65</string>
     <string name="numberAge">25</string>
+    <string name="Calcular">Calcular</string>
+    <string name="tvAltura">120 cm</string>
+    <string name="tuResultado">Tu Resultado</string>
+    <string name="reCalcular">RE-CALCULAR</string>
 </resources>
