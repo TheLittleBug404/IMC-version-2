@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             //formatearemos el decimal para que no nos de valores enteros
             val df = DecimalFormat("#.##")
             val result = df.format(value)
-            tvHeigth.text = "$result cm"
+            tvHeigth.text = "$result"
         }
         fabMenosPeso.setOnClickListener {
             peso -= 1
@@ -99,7 +99,12 @@ class MainActivity : AppCompatActivity() {
             tvMasMenosEdad.text = edad.toString()
         }
         botonCalcular.setOnClickListener {
-            val ventanaNueva = Intent(this,ResultadoActivity::class.java)
+            val altura:String = tvHeigth.text.toString()
+            val peso:String = tvMasMenosPeso.text.toString()
+            val ventanaNueva = Intent(this,ResultadoActivity::class.java).apply {
+                putExtra("altura",altura)
+                putExtra("peso",peso)
+            }
             startActivity(ventanaNueva)
         }
     }
